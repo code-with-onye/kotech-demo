@@ -15,6 +15,7 @@ export interface BrandConfig {
   colors: {
     primary: string;
     primaryLight: string;
+    accent?: string;
   };
 }
 
@@ -48,6 +49,21 @@ export const BRANDS: Record<string, BrandConfig> = {
     colors: {
       primary: "#3B82F6", // Indigo/Blue for a tech-demo feel
       primaryLight: "#EFF6FF",
+    },
+  },
+  prettywee: {
+    id: "prettywee",
+    name: "Prettyweecleans",
+    nameUpper: "PRETTYWEECLEANS",
+    subtext: "Pretty Wee Cleans",
+    tagline: "Pretty tidy, pretty fast, pretty wee cleans.",
+    description: "Prettyweecleans offers high-quality, reliable, and friendly domestic cleaning services. From weekly cleans to one-off deep cleans, we keep your home sparkling.",
+    url: "https://prettyweecleans.com/",
+    keywords: ["prettyweecleans", "wee cleans", "domestic cleaning", "house cleaning", "friendly cleaners", "reliable cleaning"],
+    colors: {
+      primary: "#D45D79", // The signature pink from their logo
+      primaryLight: "#FDEFF2",
+      accent: "#62B6B7", // The signature teal from their logo
     },
   },
 };

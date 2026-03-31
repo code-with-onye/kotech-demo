@@ -17,6 +17,11 @@ export function BrandProvider({ brandId, children }: { brandId: string; children
     const root = document.documentElement;
     root.style.setProperty('--brand-primary', brand.colors.primary);
     root.style.setProperty('--brand-primary-light', brand.colors.primaryLight);
+    if (brand.colors.accent) {
+      root.style.setProperty('--brand-accent', brand.colors.accent);
+    } else {
+      root.style.setProperty('--brand-accent', brand.colors.primary); // Fallback
+    }
     
     // Update title
     document.title = brand.name;

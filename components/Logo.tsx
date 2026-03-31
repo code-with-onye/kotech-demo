@@ -22,9 +22,17 @@ export default function Logo({ light = false }: { light?: boolean }) {
       </div>
       <div className="flex flex-col leading-none">
         <span className={`text-2xl font-black tracking-tighter transition-colors ${light ? 'text-white' : 'text-gray-900'}`}>
-          {brand.nameUpper}
+          {brand.id === 'prettywee' ? (
+            <>
+              <span className="text-[#D45D79]">PRETTY</span>
+              <span className="text-[#62B6B7]">WEE</span>
+              <span className={light ? 'text-white' : 'text-gray-900'}>CLEANS</span>
+            </>
+          ) : (
+            brand.nameUpper
+          )}
         </span>
-        <span className={`text-[10px] font-bold tracking-[0.3em] uppercase transition-colors ${light ? 'text-white/50' : 'text-primary'}`}>
+        <span className={`text-[10px] font-bold tracking-[0.3em] uppercase transition-colors ${light ? 'text-white/50' : 'text-(--brand-accent)'}`}>
           {brand.subtext}
         </span>
       </div>
