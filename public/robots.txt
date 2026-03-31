@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gleamcleaning.com/sitemap.xml
