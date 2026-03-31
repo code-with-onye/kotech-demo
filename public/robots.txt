@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /private/
 
-Sitemap: https://gleamcleaning.com/sitemap.xml
+Sitemap: https://kotechdemo.com/sitemap.xml
