@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+/* 
+  Chelsea Sloan Studios - Custom Beauty Theme
+*/
+
+:root {
+  --beauty-bg: #f5f5f0;
+  --beauty-primary: #102a2a;
+  --beauty-secondary: #c5a059;
+  --beauty-text: #1a1a1a;
+  --beauty-text-muted: #555555;
+  --beauty-white: #ffffff;
+}
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-beauty-primary: var(--beauty-primary);
+  --color-beauty-bg: var(--beauty-bg);
+  --color-beauty-secondary: var(--beauty-secondary);
+}
+
+.beauty-body {
+  background-color: var(--beauty-bg);
+  color: var(--beauty-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: var(--font-sans);
+  color: var(--beauty-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 2rem !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .nav-scrolled {
+    padding: 1rem 1.5rem !important;
+  }
+}
+
+.nav-scrolled .nav-link {
+  color: var(--beauty-primary);
+  text-shadow: none;
+}
+
+.nav-scrolled .logo-text {
+  color: var(--beauty-primary);
+}
+
+.nav-scrolled .logo-circle {
+  background-color: var(--beauty-primary);
+}
+
+.nav-scrolled .btn-book {
+  background-color: var(--beauty-primary);
+  color: white;
+}
+
+.logo-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.nav-scrolled .logo-text {
+  text-shadow: none;
+}
+
+.logo-circle {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-scrolled .logo-circle {
+  box-shadow: none;
+}
+
+.btn-book {
+  background-color: var(--beauty-white);
+  color: var(--beauty-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.btn-book:hover {
+  background-color: var(--beauty-primary);
+  color: var(--beauty-white);
+  border-color: var(--beauty-white);
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--beauty-primary);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  transition: all 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+  clip-path: circle(0% at top right);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.mobile-menu-overlay.open {
+  clip-path: circle(150% at top right);
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-overlay {
+    display: none;
+  }
+}
+
+.mobile-nav-link {
+  font-size: 2rem;
+  color: white;
+  font-family: var(--font-serif);
+  font-style: italic;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-link:hover {
+  opacity: 0.7;
+}
+
+.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none !important;
+  }
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.nav-scrolled .hamburger span {
+  background-color: var(--beauty-primary);
+}
+
+.hamburger.open span {
+  background-color: white !important;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1.1;
+  font-weight: 400;
+  color: var(--beauty-white);
+  font-style: italic;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.1;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+}
+
+.category-tag {
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--beauty-primary);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-tag.active {
+  background-color: var(--beauty-primary);
+  color: var(--beauty-white);
+}
+
+.treatment-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+
+.footer-glass {
+  background-color: var(--beauty-primary);
+  color: var(--beauty-white);
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
+  padding: 6rem 2rem 2rem;
+}
+
+.opening-hours {
+  background-color: #e8e8d8;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+}
+
+.contact-card {
+  background-color: #fafaf5;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+}
+
+.gold-card {
+  background-color: #f2e1a0;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
