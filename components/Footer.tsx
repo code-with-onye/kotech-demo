@@ -41,12 +41,13 @@ export default function Footer() {
         <div className="md:col-span-4">
           <h4 className="font-bold text-lg mb-6">Services</h4>
           <ul className="space-y-4 text-gray-400 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">Sparkling clean every time</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Experience the power of clean</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Quality cleaning for quality living</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Fresh spotless, and stress-free</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Cleaning beyond expectations</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Bringing shine to your space</a></li>
+            {brand.services.list.map((service, index) => (
+              <li key={index}>
+                <a href="#services" className="hover:text-white transition-colors">
+                  {service.title}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

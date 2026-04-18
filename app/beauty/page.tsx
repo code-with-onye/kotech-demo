@@ -78,6 +78,7 @@ export default function BeautyPage() {
           src="/beauty/hero.png"
           alt="Serene back massage"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -140,6 +141,7 @@ export default function BeautyPage() {
               src="/beauty/hot-stone.png"
               alt="Hot stone massage"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute bottom-4 md:bottom-6 right-4 md:right-6 flex gap-3">
@@ -193,19 +195,19 @@ export default function BeautyPage() {
         {/* Responsive Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6 md:h-[600px]">
           <div className="col-span-1 relative aspect-[4/5] md:aspect-auto rounded-2xl md:rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500">
-            <Image src="/beauty/experience.png" alt="Spa scene" fill className="object-cover" />
+            <Image src="/beauty/experience.png" alt="Spa scene" fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover" />
           </div>
           <div className="col-span-1 relative aspect-[4/5] md:aspect-auto rounded-2xl md:rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 md:translate-y-12">
-            <Image src="/beauty/experience.png" alt="Essential oils" fill className="object-cover" />
+            <Image src="/beauty/experience.png" alt="Essential oils" fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover" />
           </div>
           <div className="col-span-2 md:col-span-1 relative aspect-[16/9] md:aspect-auto rounded-2xl md:rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500">
-            <Image src="/beauty/experience.png" alt="Relaxation" fill className="object-cover" />
+            <Image src="/beauty/experience.png" alt="Relaxation" fill sizes="(max-width: 768px) 100vw, 20vw" className="object-cover" />
           </div>
           <div className="col-span-1 relative aspect-[4/5] md:aspect-auto rounded-2xl md:rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 md:translate-y-12">
-            <Image src="/beauty/experience.png" alt="Wellness" fill className="object-cover" />
+            <Image src="/beauty/experience.png" alt="Wellness" fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover" />
           </div>
           <div className="col-span-1 relative aspect-[4/5] md:aspect-auto rounded-2xl md:rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500">
-            <Image src="/beauty/experience.png" alt="Serenity" fill className="object-cover" />
+            <Image src="/beauty/experience.png" alt="Serenity" fill sizes="(max-width: 768px) 50vw, 20vw" className="object-cover" />
           </div>
         </div>
       </section>
@@ -245,6 +247,7 @@ export default function BeautyPage() {
                   src="/beauty/team.png"
                   alt={member.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
                   className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
               </div>

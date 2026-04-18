@@ -1,40 +1,13 @@
-"use client";
-
+"use client"
 import { ArrowLeft, ArrowRight, Star, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useBrand } from '../context/BrandContext';
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Ashley Cooper",
-    role: "Product Designer",
-    content: "Professional, reliable, and thorough! The team at this cleaning service transformed my home office into a productive sanctuary. I couldn't be happier with the results.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
-  },
-  {
-    id: 2,
-    name: "Caleb Ryan Blake",
-    role: "Marketing Manager",
-    content: "Excellent service! The team was professional, thorough, and left our office sparkling. Their attention to detail is unmatched, and they were very flexible with our scheduling needs.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
-  },
-  {
-    id: 3,
-    name: "Sarah Jenkins",
-    role: "Home Owner",
-    content: "I've been using their services for months now, and they never disappoint. The 'Before and After' difference is always incredible. Highly recommend for anyone looking for premium cleaning.",
-    rating: 5,
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
-  }
-];
-
 export default function Testimonials() {
+  const brand = useBrand();
+  const { testimonials } = brand;
   const [activeIndex, setActiveIndex] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
-  const brand = useBrand();
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -44,14 +17,16 @@ export default function Testimonials() {
   }, []);
 
   const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    setActiveIndex((prev) => (prev + 1) % testimonials.list.length);
   };
 
   const prevSlide = () => {
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setActiveIndex((prev) => (prev - 1 + testimonials.list.length) % testimonials.list.length);
   };
 
   const isMobile = windowWidth < 768;
+
+  if (!testimonials.list || testimonials.list.length === 0) return null;
 
   return (
     <section className="py-24 px-6 bg-[#f2f6f3]">
@@ -60,9 +35,9 @@ export default function Testimonials() {
         {/* Left Column: Heading & Google Rating */}
         <div className="lg:col-span-4 space-y-8">
           <div>
-            <h2 className="text-5xl font-black mb-6 text-text-dark uppercase tracking-tighter">Trusted Clients</h2>
+            <h2 className="text-5xl font-black mb-6 text-text-dark uppercase tracking-tighter">{testimonials.title}</h2>
             <p className="text-gray-600 text-lg leading-relaxed">
-              Join our satisfied clients who trust us for impeccable cleaning services.
+              {testimonials.description}
             </p>
           </div>
 
@@ -92,7 +67,7 @@ export default function Testimonials() {
                 <span className="font-bold text-text-dark">Google Rating</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-bold text-text-dark">4.89</span>
+                <span className="font-bold text-text-dark">{testimonials.googleRating}</span>
                 <div className="flex gap-0.5 text-[#f4c150]">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current" />
@@ -114,7 +89,7 @@ export default function Testimonials() {
             className="flex transition-transform duration-500 ease-in-out gap-4 md:gap-8"
             style={{ transform: `translateX(-${activeIndex * (isMobile ? 100 : 55)}%)` }}
           >
-            {testimonials.map((t, index) => {
+            {testimonials.list.map((t, index) => {
               const isActive = activeIndex === index;
               return (
                 <div 

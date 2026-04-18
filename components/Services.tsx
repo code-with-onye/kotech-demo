@@ -1,85 +1,22 @@
-"use client";
-
+"use client"
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
-
-const disinfectionImg = '/assets/service-disinfection.png';
-const officeImg = '/assets/service-office.png';
-const floorImg = '/assets/service-floor.png';
-
-const servicesData = [
-  { 
-    id: 'home',
-    title: 'House cleaning', 
-    description: 'We clean your home from top to bottom, making sure every room is spotless and comfortable.',
-    features: [
-      'Deep cleaning for every room.',
-      'Removing dust and dirt.',
-      'A fresh-smelling home.',
-      'Careful handling of your things.'
-    ],
-    image: '/house-cleaning.jpg'
-  },
-  { 
-    id: 'disinfection',
-    title: 'Safe sanitizing', 
-    description: 'We use safe sprays to kill germs and keep your family healthy and protected.',
-    features: [
-      'Kills 99.9% of germs.',
-      'Safe for kids and pets.',
-      'Full-room sanitizing.',
-      'Peace of mind for you.'
-    ],
-    image: disinfectionImg
-  },
-  { 
-    id: 'office',
-    title: 'Office cleaning', 
-    description: 'A clean office helps your team work better. We keep your workspace tidy and organized.',
-    features: [
-      'Cleaning after work hours.',
-      'Tidying desks and tech.',
-      'Cleaning shared areas.',
-      'Professional standards.'
-    ],
-    image: '/office-cleaning.jpg'
-  },
-  { 
-    id: 'floor',
-    title: 'Floor shining', 
-    description: 'We make your wood, tile, or marble floors look brand new with our shining service.',
-    features: [
-      'Works on all floor types.',
-      'Makes floors look new.',
-      'Protects your flooring.',
-      'Deep cleaning included.'
-    ],
-    image: floorImg
-  },
-  { 
-    id: 'dust',
-    title: 'Deep dusting', 
-    description: 'We reach the high spots and hidden corners where dust usually hides.',
-    features: [
-      'Reaching high surfaces.',
-      'Using strong vacuums.',
-      'Handling fragile items.',
-      'Better air for your home.'
-    ],
-    image: '/assets/service-dust.png'
-  },
-];
+import { useBrand } from '../context/BrandContext';
 
 export default function Services() {
-  const [activeId, setActiveId] = useState('home');
+  const brand = useBrand();
+  const servicesData = brand.services.list;
+  const [activeId, setActiveId] = useState(servicesData[0]?.id || 'home');
   const activeService = servicesData.find(s => s.id === activeId) || servicesData[0];
+
+  if (!servicesData || servicesData.length === 0) return null;
 
   return (
     <section className="py-24 px-6 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16">
           <h2 className="text-4xl md:text-5xl font-black max-w-xl leading-tight text-gray-900">
-            Effortless cleaning for<br />your home or office
+            {brand.services.title}
           </h2>
           <button className="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-6 md:mt-0 group">
             Explore All Services

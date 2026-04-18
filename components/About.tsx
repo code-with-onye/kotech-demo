@@ -1,31 +1,12 @@
-"use client";
-
+"use client"
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useBrand } from '../context/BrandContext';
 
-const aboutItems = [
-  {
-    title: "Quality you can trust",
-    content: "We provide high-quality cleaning that you can rely on every time. Our experienced team treats every home with total care."
-  },
-  {
-    title: "Making your life easier",
-    content: "Our mission is to help you relax. We offer flexible times and custom plans that work around your schedule."
-  },
-  {
-    title: "Safe and healthy cleaning",
-    content: "We use cleaning products that are safe for your family and pets. Your home will be fresh, clean, and worry-free."
-  },
-  {
-    title: "Focus on the details",
-    content: "We don't just clean the big things; we look for the small spots most people miss. We're not happy until everything sparkles."
-  }
-];
-
 export default function About() {
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const brand = useBrand();
+  const { about } = brand;
 
   return (
     <section className="py-24 px-6 bg-white overflow-hidden">
@@ -33,7 +14,7 @@ export default function About() {
         <div className="relative group">
           <div className="rounded-4xl md:rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
             <img 
-              src="/pexels-liliana-drew-9462313.jpg" 
+              src={about.image} 
               alt={`${brand.name} professional team at work`} 
               className="w-full h-[350px] md:h-[600px] object-cover focus-visible:outline-none"
             />
@@ -44,16 +25,16 @@ export default function About() {
         </div>
 
         <div>
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">About Us</span>
+          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">{about.title}</span>
           <h2 className="text-3xl md:text-4xl font-black mb-6 leading-tight text-gray-900">
-            A cleaner home for a happier life.
+            {about.subtitle}
           </h2>
           <p className="text-gray-600 mb-10 text-base leading-relaxed">
-            We are a team of friendly, professional cleaners who care about your home as much as you do. We focus on the details so you don't have to.
+            {about.description}
           </p>
 
           <div className="space-y-4">
-            {aboutItems.map((item, index) => {
+            {about.items.map((item, index) => {
               const isActive = activeIndex === index;
               return (
                 <div 
